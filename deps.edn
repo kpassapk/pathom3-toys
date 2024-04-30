@@ -1,0 +1,10 @@
+{:paths ["src" "resources"]
+ :deps  {com.wsscode/pathom3 {:mvn/version "2023.08.22-alpha"}
+         http-kit/http-kit {:mvn/version "2.7.0"}
+         cheshire/cheshire {:mvn/version "5.13.0"}
+         scicloj/tablecloth {:mvn/version "7.029.2"}
+         org.scicloj/clay {:mvn/version "2-alpha80"}
+         djblue/portal {:mvn/version "0.55.1"}}
+ :aliases 
+ {:ip-weather
+  {:exec-fn pathom3.pathom3/get-weather}}}

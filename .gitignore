@@ -1,0 +1,6 @@
+/.clj-kondo/
+/.cpcache/
+/.lsp/
+/.nrepl-port
+/docs/
+/src/pathom3/.cpcache/
