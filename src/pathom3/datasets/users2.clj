@@ -1,4 +1,4 @@
-(ns pathom3.users2
+(ns pathom3.datasets.users2
   (:require
    [clojure.java.io :as io]
    [com.wsscode.pathom3.connect.indexes :as pci]

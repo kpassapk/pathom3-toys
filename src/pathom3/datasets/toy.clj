@@ -1,10 +1,10 @@
-(ns pathom3.datasets
+(ns pathom3.datasets.toy
   (:require
    [com.wsscode.pathom3.connect.indexes :as pci]
    [com.wsscode.pathom3.connect.operation :as pco]
    [com.wsscode.pathom3.interface.smart-map :as psm]
-   [pathom3.users1 :as u1]
-   [pathom3.users2 :as u2]
+   [pathom3.datasets.users1 :as u1]
+   [pathom3.datasets.users2 :as u2]
    [tablecloth.api :as tc]))
 
 (pco/defresolver u1-u2-joined
@@ -37,5 +37,9 @@
              (tc/dataset)))
 
   m
+  ;; | :pathom3.datasets/id | :pathom3.datasets/name | :pathom3.datasets/phone |
+  ;; |---------------------:|------------------------|------------------------:|
+  ;; |                  123 |           Jose Avelino |                50010604 |
+
 
 )

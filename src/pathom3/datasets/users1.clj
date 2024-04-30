@@ -1,4 +1,4 @@
-(ns pathom3.users1
+(ns pathom3.datasets.users1
   (:require
    [clojure.java.io :as io]
    [clojure.string :as str]
@@ -15,6 +15,7 @@
       tc/dataset))
 
 (pco/defresolver raw->first-name-last-name-phone
+  "Maps source fields to known fields"
   [{::keys [raw]}]
   {::first-name (tc/column raw "Nombre")
    ::last-name (tc/column raw "Apellido")
@@ -26,7 +27,7 @@
 (pco/defresolver first-name->clean-first-name
   [{::keys [first-name]}]
   {::clean-first-name (-> first-name
-                        (tcc/column-map str/capitalize))})
+                          (tcc/column-map str/capitalize))})
 
 (comment
   (first-name->clean-first-name {::first-name (tcc/column ["JUAN"])}))
@@ -65,4 +66,18 @@
   ;; Works
   (def m (-> (psm/smart-map index {::raw dataset})
              (psm/sm-touch! [::clean-name])))
+
+  m
+  ;; {:raw [1 3]:
+
+  ;; | Nombre | Apellido | Telefono |
+  ;; |--------|----------|---------:|
+  ;; |   JOSE |  Avelino | 50010604 |
+  ;; , :first-name ("JOSE"),
+  ;; :last-name ("Avelino"),
+  ;; :phone (50010604),
+  ;; :clean-last-name ("Avelino"),
+  ;; :clean-first-name ("Jose"),
+  ;; :clean-name ("Jose Avelino")}
+
 )
